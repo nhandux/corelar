@@ -17,7 +17,7 @@
       "Nhanduc\\Core\\": "src"
     },
     "files": [
-      "src/constants.php"
+      "src/helpers/Code.php"
     ]
   },
   "extra": {
