@@ -1,0 +1,30 @@
+{
+  "name": "nhanduc/core",
+  "description": "Library of laravel project",
+  "type": "library",
+  "keywords": ["laravel", "nhanduc", "core", "contact", "login"],
+  "license": "BSD-2-Clause",
+  "authors": [
+    {
+      "name": "Nguyen Duc Nhan",
+      "email": "nhanduc96@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Nhanduc\\Core\\": "src"
+    },
+    "files": [
+      "src/constants.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nhanduc\\Core\\CoreServiceProvider"
+      ]
+    }
+  }
+} 

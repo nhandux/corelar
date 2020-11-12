@@ -1,0 +1,2 @@
+# nhanduc-core
+Simple package
