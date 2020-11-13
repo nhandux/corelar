@@ -97,6 +97,39 @@ abstract class BaseRepository implements RepositoryContract
     }
 
     /**
+	 * Create a new model record in the database
+	 *
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function create(array $data)
+	{
+		$this->unsetClauses();
+
+		return $this->model->create($data);
+    }
+    
+    /**
+	 * Create one or more new model records in the database
+	 * 
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function createMultiple(array $data)
+	{
+		$models = new Collection();
+
+		foreach($data as $d)
+		{
+			$models->push($this->create($d));
+		}
+
+		return $models;
+	}
+
+    /**
      * Get the first specified model record from the database.
      *
      * @return \Illuminate\Database\Eloquent\Model
@@ -161,6 +194,22 @@ abstract class BaseRepository implements RepositoryContract
     }
 
     /**
+	 * Delete one or more model records from the database
+	 *
+	 * @return mixed
+	 */
+	public function delete()
+	{
+		$this->newQuery()->setClauses()->setScopes();
+
+		$result = $this->query->delete();
+
+		$this->unsetClauses();
+
+		return $result;
+	}
+
+    /**
      * Delete the specified model record from the database.
      *
      * @param $id
@@ -174,6 +223,18 @@ abstract class BaseRepository implements RepositoryContract
 
         return $this->getById($id)->delete();
     }
+
+    /**
+	 * Delete multiple records
+	 *
+	 * @param array $ids
+	 *
+	 * @return int
+	 */
+	public function deleteMultipleById(array $ids)
+	{
+		return $this->model->destroy($ids);
+	}
 
     /**
      * Set the query limit.
@@ -203,6 +264,25 @@ abstract class BaseRepository implements RepositoryContract
         return $this;
     }
 
+    /**
+	 * Update the specified model record in the database
+	 *
+	 * @param       $id
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function updateById($id, array $data)
+	{
+		$this->unsetClauses();
+
+		$model = $this->getById($id);
+
+		$model->update($data);
+
+		return $model;
+    }
+    
     /**
      * @param int    $limit
      * @param array  $columns

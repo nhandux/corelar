@@ -20,13 +20,23 @@ interface RepositoryContract
 
     public function count();
 
+    public function create(array $data);
+
+    public function createMultiple(array $data);
+
     public function deleteById($id);
+
+    public function delete();
+
+    public function deleteMultipleById(array $ids);
 
     public function first();
 
     public function get();
 
     public function getById($id);
+
+    public function updateById($id, array $data);
 
     public function getByColumn($item, $column, array $columns = ['*']);
 
