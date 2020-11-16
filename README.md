@@ -43,7 +43,3 @@ php artisan migrate
 php artisan serve --port 80
 ```
 Url: [http://localhost/nhanduc/contact](http://localhost/nhanduc/contact)
-
-
-
-========

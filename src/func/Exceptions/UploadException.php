@@ -1,7 +1,10 @@
-<?php namespace Nhanduc\Core\Func\S3;
+<?php namespace Nhanduc\Core\Func\Exceptions;
+
+use Throwable;
+
 /** :: Nhanduc ::
 ***********************************************************************************************************************
-* @source  : JsonValidation.php
+* @source  : FuncS3.php
 * @project :
 *----------------------------------------------------------------------------------------------------------------------
 * VER  DATE           AUTHOR          DESCRIPTION
@@ -11,3 +14,10 @@
 * Project Description
 * Copyright(c) 2020 Nhanduc Ltd. ,All rights reserved.
 **********************************************************************************************************************/
+class UploadException extends \Exception
+{
+    public function __construct($message = "", $code = 0, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
+}
