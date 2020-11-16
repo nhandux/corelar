@@ -22,14 +22,16 @@ class CoreServiceProvider extends ServiceProvider{
      */
     public function boot()
     { 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'nhan');
+        if(config('nhanduc.admin_view')) {
+            $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+            $this->loadViewsFrom(__DIR__.'/resources/views', 'nhan');
 
-        $this->app['router']->namespace('Nhanduc\\Core\\App\\Controllers')
-            ->middleware(['web'])
-            ->group(function () {
-                $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-            });
+            $this->app['router']->namespace('Nhanduc\\Core\\App\\Controllers')
+                ->middleware(['web'])
+                ->group(function () {
+                    $this->loadRoutesFrom(__DIR__ . '/routes/admin.php');
+                });
+        }
 
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -55,10 +57,12 @@ class CoreServiceProvider extends ServiceProvider{
     {
         $this->publishes([
             __DIR__.'/config/nhanduc.php' => config_path('nhanduc.php'),
-        ], 'nhanduc-config');
+            __DIR__ . '/database/migrations/' => database_path('migrations')
+        ], 'nhanduc-setting');
 
         $this->publishes([
-            __DIR__ . '/database/migrations/' => database_path('migrations'),
-        ], 'nhanduc-migrations');
+            __DIR__ . '/resources/views/' => resource_path('views'),
+            __DIR__.'/resources/assets/' => public_path('admin_statics'),
+        ], 'nhanduc-admin');
     }
 } 
