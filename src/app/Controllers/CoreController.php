@@ -26,6 +26,11 @@
             return view('admin.auth.admin.index');
         }
 
+        public function adminCreate()
+        {
+            return view('admin.auth.admin.create');
+        }
+
         public function noticeIndex()
         {
             return view('admin.notice.index');

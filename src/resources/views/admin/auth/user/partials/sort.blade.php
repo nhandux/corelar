@@ -10,5 +10,6 @@
                 </select>
             </div>
         </div>
-	</div>
+    </div>
+    <a href="/admin/auth/admin/create" class="btn btn-primary">Create Admin</a>
 </div>

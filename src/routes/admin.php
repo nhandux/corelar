@@ -8,6 +8,7 @@
         Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
             Route::get('user', [CoreController::class, 'userIndex'])->name('user.index');
             Route::get('admin', [CoreController::class, 'adminIndex'])->name('admin.index');
+            Route::get('admin/create', [CoreController::class, 'adminCreate'])->name('admin.create');
         });
         
         Route::get('notice', [CoreController::class, 'noticeIndex'])->name('notice.index');
