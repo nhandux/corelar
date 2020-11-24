@@ -1,17 +1,6 @@
-<?php namespace Nhanduc\Core\Func\Exceptions;
+<?php
 
-/** :: Nhanduc ::
-***********************************************************************************************************************
-* @source  : Handler.php
-* @project :
-*----------------------------------------------------------------------------------------------------------------------
-* VER  DATE           AUTHOR          DESCRIPTION
-* ---  -------------  --------------  ---------------------------------------------------------------------------------
-* 1.0  2020/11/12     Name_0070
-* ---  -------------  --------------  ---------------------------------------------------------------------------------
-* Project Description
-* Copyright(c) 2020 Nhanduc Ltd. ,All rights reserved.
-**********************************************************************************************************************/
+namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
@@ -50,7 +39,11 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->renderable(function (Throwable $e, $request) {
+        $this->reportable(function (Throwable $exception) {
+            parent::report($exception);
+        });
+
+        $this->renderable(function (Throwable $exception, $request) { 
             if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
 
                 return $this->sendFailedResponse(
@@ -60,11 +53,19 @@ class Handler extends ExceptionHandler
             }
     
             if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
-                $url = Request::fullUrl();
+                $url = request()->fullUrl();
     
                 return $this->sendFailedResponse(
                     "The requested URL [$url] was not found on this server.",
                     $this->statusNotFound
+                );
+            }
+    
+            if ($exception instanceof MethodNotAllowedHttpException && $request->wantsJson()) {
+    
+                return $this->sendFailedResponse(
+                    $exception->getMessage(),
+                    $this->statusMethodNotAllowed
                 );
             }
 
@@ -75,16 +76,8 @@ class Handler extends ExceptionHandler
                     $this->statusMethodNotAllowed
                 );
             }
-
-            if ($exception instanceof MethodNotAllowedHttpException && $request->wantsJson()) {
     
-                return $this->sendFailedResponse(
-                    $exception->getMessage(),
-                    $this->statusMethodNotAllowed
-                );
-            }
-    
-            return parent::render($request, $exception);
+            // return parent::render($request, $exception);
         });
     }
 }
