@@ -44,8 +44,8 @@ class JsonValidation extends ExceptionHandler
      */
     public function render() {
         return $this->sendFailedResponse(
-            $this->statusUnprocessableEntity, 
-            $this->validator->errors()->first()
+            $this->validator->errors()->first(),
+            $this->statusUnprocessableEntity
         );
     }
 }

@@ -40,44 +40,54 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $exception) {
-            parent::report($exception);
+            //
         });
 
         $this->renderable(function (Throwable $exception, $request) { 
-            if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
 
-                return $this->sendFailedResponse(
-                    'Model not found.',
-                    $this->statusNotFound
-                );
-            }
-    
-            if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
-                $url = request()->fullUrl();
-    
-                return $this->sendFailedResponse(
-                    "The requested URL [$url] was not found on this server.",
-                    $this->statusNotFound
-                );
-            }
-    
-            if ($exception instanceof MethodNotAllowedHttpException && $request->wantsJson()) {
-    
-                return $this->sendFailedResponse(
-                    $exception->getMessage(),
-                    $this->statusMethodNotAllowed
-                );
-            }
+            if($request->wantsJson()) { 
+            
+                if ($exception instanceof ModelNotFoundException) {
 
-            if ($exception instanceof UnauthorizedException && $request->wantsJson()) {
-                
-                return $this->sendFailedResponse(
-                    $exception->getMessage(),
-                    $this->statusMethodNotAllowed
-                );
+                    return $this->sendFailedResponse(
+                        'Model not found.',
+                        $this->statusNotFound
+                    );
+                }
+        
+                if ($exception instanceof NotFoundHttpException) {
+                    $url = request()->fullUrl();
+        
+                    return $this->sendFailedResponse(
+                        "The requested URL [$url] was not found on this server.",
+                        $this->statusNotFound
+                    );
+                }
+        
+                if ($exception instanceof MethodNotAllowedHttpException) {
+        
+                    return $this->sendFailedResponse(
+                        $exception->getMessage(),
+                        $this->statusMethodNotAllowed
+                    );
+                }
+
+                if ($exception instanceof UnauthorizedException) {
+                    
+                    return $this->sendFailedResponse(
+                        $exception->getMessage(),
+                        $this->statusMethodNotAllowed
+                    );
+                }
+
+                if (!empty($exception->getMessage())) {
+                    
+                    return $this->sendFailedResponse(
+                        $exception->getMessage(),
+                        $this->statusMethodNotAllowed
+                    );
+                }
             }
-    
-            // return parent::render($request, $exception);
         });
     }
 }
