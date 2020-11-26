@@ -12,11 +12,11 @@
 * Copyright(c) 2020 Nhanduc Ltd. ,All rights reserved.
 **********************************************************************************************************************/
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Contracts\Validation\Validator;
 use Nhanduc\Core\Func\Traits\ApiResponse;
+use Exception;
 
-class JsonValidation extends ExceptionHandler
+class JsonValidation extends Exception
 {
     use ApiResponse;
     /**
