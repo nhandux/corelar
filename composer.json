@@ -19,7 +19,7 @@
 			"Nhanduc\\Core\\": "src"
 		},
 		"files": [
-			"src/helpers/Code.php"
+			"src/Helpers/Code.php"
 		]
 	},
 	"extra": {
