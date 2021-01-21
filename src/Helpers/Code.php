@@ -1,4 +1,4 @@
-<?php  namespace Nhanduc\Core\Helper;
+<?php  namespace Nhanduc\Core\Helpers;
 /** :: Nhanduc ::
 ***********************************************************************************************************************
 * @source  : Code.php
