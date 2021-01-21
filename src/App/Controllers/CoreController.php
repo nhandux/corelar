@@ -1,5 +1,5 @@
 <?php
-    namespace Nhanduc\Core\Controllers;
+    namespace Nhanduc\Core\App\Controllers;
 
     use Illuminate\Http\Request;
     use Illuminate\Routing\Controller;
