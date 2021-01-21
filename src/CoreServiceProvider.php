@@ -45,7 +45,7 @@ class CoreServiceProvider extends ServiceProvider{
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/nhanduc.php', 'nhanduc');
+        $this->mergeConfigFrom(__DIR__.'/Config/nhanduc.php', 'nhanduc');
     }
 
     /**
@@ -56,13 +56,13 @@ class CoreServiceProvider extends ServiceProvider{
     protected function bootForConsole()
     {
         $this->publishes([
-            __DIR__.'/config/nhanduc.php' => config_path('nhanduc.php'),
-            __DIR__ . '/database/migrations/' => database_path('migrations')
+            __DIR__.'/Config/nhanduc.php' => config_path('nhanduc.php'),
+            __DIR__ . '/Database/Migrations/' => database_path('migrations')
         ], 'nhanduc-setting');
 
         $this->publishes([
-            __DIR__ . '/resources/views/' => resource_path('views'),
-            __DIR__.'/resources/assets/' => public_path('admin_statics'),
+            __DIR__ . '/Resources/views/' => resource_path('views'),
+            __DIR__.'/Resources/assets/' => public_path('admin_statics'),
         ], 'nhanduc-admin');
     }
 } 
