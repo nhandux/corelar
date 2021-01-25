@@ -43,7 +43,7 @@ class FuncLocal {
      * @param array $path
      * @throws UploadException
      */
-    public function uploadImage($file, $rootPath, ...$paths) {
+    public function uploadImage($file, $rootPath, $fileName, ...$paths) {
         
         if(empty($file)) {
             throw  new UploadException("File does not exists");
@@ -215,7 +215,7 @@ class FuncLocal {
      * @param array $path
      * @throws UploadException
      */
-    public function uploadFile($file, $rootPath, ...$paths) {
+    public function uploadFile($file, $rootPath, $fileName, ...$paths) {
         if(empty($file)) {
             throw  new UploadException("File does not exists");
         } else if(empty($rootPath)) {
