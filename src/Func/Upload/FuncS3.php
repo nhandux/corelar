@@ -197,7 +197,7 @@ class FuncS3 {
      * @param array $path
      * @throws UploadException
      */
-    public function uploadFile($file, $rootPath,  ...$paths) {
+    public function uploadFile($file, $rootPath, ...$paths) {
         if(empty($file)) {
             throw  new UploadException("File does not exists");
         } else if(empty($rootPath)) {
