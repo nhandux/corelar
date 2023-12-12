@@ -1,4 +1,6 @@
-<?php namespace Nhanduc\Core\Func\Repositories;
+<?php
+
+namespace Nhanduc\Core\Func\Repositories;
 
 /** :: Nhanduc ::
 ***********************************************************************************************************************

@@ -1,4 +1,7 @@
-<?php namespace Nhanduc\Core\Func\Exceptions;
+<?php
+
+namespace Nhanduc\Core\Func\Exceptions;
+
 /** :: Nhanduc ::
 ***********************************************************************************************************************
 * @source  : GeneralException.php

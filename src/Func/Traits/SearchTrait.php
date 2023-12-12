@@ -1,4 +1,7 @@
-<?php namespace Nhanduc\Core\Func\Traits;
+<?php
+
+namespace Nhanduc\Core\Func\Traits;
+
 /** :: Nhanduc ::
 ***********************************************************************************************************************
 * @source  : SearchTrait.php

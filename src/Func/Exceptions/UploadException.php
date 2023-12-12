@@ -1,4 +1,6 @@
-<?php namespace Nhanduc\Core\Func\Exceptions;
+<?php
+
+namespace Nhanduc\Core\Func\Exceptions;
 
 use Throwable;
 

@@ -1,4 +1,7 @@
-<?php  namespace Nhanduc\Core;
+<?php
+
+namespace Nhanduc\Core;
+
 /** :: Nhanduc ::
 ***********************************************************************************************************************
 * @source  : CoreServiceProvider.php

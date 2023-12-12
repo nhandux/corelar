@@ -1,4 +1,6 @@
-<?php namespace Nhanduc\Core\Func\Upload;
+<?php
+
+namespace Nhanduc\Core\Func\Upload;
 
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
